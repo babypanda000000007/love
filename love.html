@@ -18,43 +18,66 @@
             align-items: center;
         }
 
-        /* Romantic background with a cool gradient */
+        /* Nature-inspired background with clouds and sunset effect */
         .background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(255, 174, 0, 0.9), rgba(255, 99, 71, 0.7));
-            animation: backgroundAnimation 15s ease-in-out infinite;
+            background: linear-gradient(180deg, rgba(255, 174, 0, 0.8), rgba(255, 99, 71, 0.7));
+            animation: backgroundAnimation 20s ease-in-out infinite;
             z-index: -1;
         }
 
         @keyframes backgroundAnimation {
-            0% {
-                background: linear-gradient(180deg, rgba(255, 174, 0, 0.9), rgba(255, 99, 71, 0.7));
-            }
-            50% {
-                background: linear-gradient(180deg, rgba(255, 99, 71, 0.7), rgba(255, 174, 0, 0.9));
-            }
-            100% {
-                background: linear-gradient(180deg, rgba(255, 174, 0, 0.9), rgba(255, 99, 71, 0.7));
-            }
+            0% { background: linear-gradient(180deg, rgba(255, 174, 0, 0.9), rgba(255, 99, 71, 0.7)); }
+            25% { background: linear-gradient(180deg, rgba(255, 140, 0, 0.8), rgba(255, 99, 71, 0.6)); }
+            50% { background: linear-gradient(180deg, rgba(255, 99, 71, 0.7), rgba(255, 174, 0, 0.9)); }
+            75% { background: linear-gradient(180deg, rgba(255, 174, 0, 0.9), rgba(255, 140, 0, 0.8)); }
+            100% { background: linear-gradient(180deg, rgba(255, 174, 0, 0.9), rgba(255, 99, 71, 0.7)); }
         }
 
-        /* Tree Animation */
+        /* Cloud animation */
+        .clouds {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 150%;
+            height: 20%;
+            background: url('https://cdn.pixabay.com/photo/2018/01/13/20/45/sky-3083994_960_720.jpg') no-repeat;
+            background-size: cover;
+            opacity: 0.2;
+            animation: cloudMove 60s linear infinite;
+        }
+
+        @keyframes cloudMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Swaying tree animation */
         .tree {
             position: absolute;
-            bottom: 50px;
-            left: 40%;
-            width: 150px;
-            height: 200px;
+            bottom: 80px;
+            left: 45%;
+            width: 180px;
+            height: 250px;
             background-color: #2e8b57;
             border-radius: 15px;
             z-index: 1;
             transform: rotate(-5deg);
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
+            animation: treeSway 4s ease-in-out infinite;
         }
 
+        @keyframes treeSway {
+            0% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+            100% { transform: rotate(-5deg); }
+        }
+
+        /* Swaying leaves */
         .tree::after {
             content: "";
             position: absolute;
@@ -64,23 +87,16 @@
             height: 80px;
             background-color: #228b22;
             border-radius: 50%;
-            animation: sway 3s ease-in-out infinite;
+            animation: sway 4s ease-in-out infinite;
         }
 
-        /* Sway tree leaves animation */
         @keyframes sway {
-            0% {
-                transform: rotate(0deg);
-            }
-            50% {
-                transform: rotate(5deg);
-            }
-            100% {
-                transform: rotate(0deg);
-            }
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
         }
 
-        /* Falling Leaves */
+        /* Falling leaves with different speeds */
         .leaf {
             position: absolute;
             font-size: 30px;
@@ -95,14 +111,8 @@
         .leaf:nth-child(5) { animation-delay: 5s; }
 
         @keyframes fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
 
         /* Letter falling animation */
@@ -111,34 +121,28 @@
             top: -100px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 20px;
+            font-size: 22px;
             background-color: #f5deb3;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             opacity: 0;
-            animation: letterFall 3s ease-in-out forwards 2s;
+            animation: letterFall 4s ease-in-out forwards 2s;
         }
 
         @keyframes letterFall {
-            0% {
-                transform: translateY(-100px) translateX(-50%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(200px) translateX(-50%);
-                opacity: 1;
-            }
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(200px); opacity: 1; }
         }
 
         /* Proposal Text inside the letter */
         .letter-content {
             font-size: 18px;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        /* Person Sitting Under Tree */
+        /* Person sitting under tree */
         .person {
             position: absolute;
             bottom: 80px;
@@ -155,57 +159,75 @@
             color: white;
             text-align: center;
             opacity: 0;
-            animation: fadeInText 4s forwards 5s;
+            animation: fadeInText 5s forwards 6s;
             z-index: 2;
         }
 
         @keyframes fadeInText {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Bird flying animation */
+        .bird {
+            position: absolute;
+            top: 10%;
+            left: -100px;
+            font-size: 30px;
+            animation: flyBird 20s linear infinite;
+        }
+
+        @keyframes flyBird {
+            0% { left: -100px; top: 10%; }
+            50% { left: 50%; top: 15%; }
+            100% { left: 100%; top: 10%; }
         }
 
     </style>
 </head>
 <body>
 
-    <!-- Background and Animated Effects -->
+    <!-- Background and Cloud Animation -->
     <div class="background"></div>
+    <div class="clouds"></div>
+
+    <!-- Bird Flying Animation -->
+    <div class="bird">🐦</div>
 
     <!-- Tree with Leaves -->
     <div class="tree"></div>
 
     <!-- Person sitting under tree -->
-    <div class="person">ðŸ‘«</div>
+    <div class="person">💑</div>
 
     <!-- Falling Leaves -->
-    <div class="leaf" style="left: 10%;">ðŸ‚</div>
-    <div class="leaf" style="left: 30%;">ðŸ</div>
-    <div class="leaf" style="left: 50%;">ðŸ‚</div>
-    <div class="leaf" style="left: 70%;">ðŸ</div>
-    <div class="leaf" style="left: 90%;">ðŸ‚</div>
+    <div class="leaf" style="left: 10%;">🍂</div>
+    <div class="leaf" style="left: 30%;">🍁</div>
+    <div class="leaf" style="left: 50%;">🍂</div>
+    <div class="leaf" style="left: 70%;">🍁</div>
+    <div class="leaf" style="left: 90%;">🍂</div>
 
     <!-- Letter Falling Animation -->
     <div class="letter">
         <div class="letter-content">
             <p>My dearest love,</p>
-            <p>From the moment I met you, my heart knew you were the one. I want to spend every moment of my life with you, cherish every laugh, every tear, and every beautiful memory we will create together. You are my forever, and I will love you always.
-"You light up my world in ways I never knew possible."
-"Your smile is the most beautiful thing I've ever seen."
+            <p>From the first time I saw you, I knew my life would change forever. Your presence fills my world with warmth, and your laughter is the sweetest melody to my heart. I want to walk beside you through every season of life, hand in hand, heart in heart. Together, we can weather any storm, and share in the joy of the most beautiful moments.</p>
+            <p>You are my sunshine on cloudy days, my comfort in times of need, and my home in this chaotic world. I love you more than words can express, more than the stars in the sky and the leaves in autumn. With you, I feel complete.</p>
+            <p>"You light up my world in ways I never knew possible."
+   "Your smile is the most beautiful thing I've ever seen."
 "You're my favorite reason to look forward to every day."
-"Iâ€™m constantly amazed by your beauty, both inside and out."
+"I’m constantly amazed by your beauty, both inside and out."
 "Being with you feels like home."
 "You make everything better just by being in it."
 "I feel so lucky to have you in my life."
-"You make me want to be the best version of myself."
-</p>
-            <p>Will you be mine?</p>
+"You make me want to be the best version of myself."</p>
         </div>
     </div>
 
-   
+    <!-- Proposal Message -->
+    <div class="proposal-message">
+        Will You be mine? 💍
+    </div>
+
 </body>
 </html>
